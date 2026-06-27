@@ -47,10 +47,7 @@ func Wc(args []string, cOpt *bool, lOpt *bool, mOpt *bool, wOpt *bool) {
             }
             count++
         }
-
         fmt.Printf("%d ", count)
-        fmt.Println(filename)
-        return
     } else {
         nchar, nline, nword := 0, 0, 0      
         onWord := false
@@ -65,15 +62,12 @@ func Wc(args []string, cOpt *bool, lOpt *bool, mOpt *bool, wOpt *bool) {
                 log.Fatalf("read error: %v", err)
                 return
             }
-
             if *cOpt {
                 nchar++
             }
-
             if *lOpt && b == '\n' {
                 nline++
             }
-
             if *wOpt {
                 if !onWord && !unicode.IsSpace(rune(b)) {
                     // head of the word
@@ -100,8 +94,8 @@ func Wc(args []string, cOpt *bool, lOpt *bool, mOpt *bool, wOpt *bool) {
         if *cOpt {
             fmt.Printf("%d ", nchar)
         }
-        fmt.Println(filename)
-        return
     }  // c, l, w option
+
+    fmt.Println(filename)
 }
 
