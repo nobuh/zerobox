@@ -86,14 +86,19 @@ func Wc(args []string, cOpt *bool, lOpt *bool, mOpt *bool, wOpt *bool) {
                 }
             }
 
+            // If the original wc with l, w and c option, 
+            // the output format is starting white space and its different
+            // from the case only single option has selected.
+            // However it must be useless.
+            
             if *lOpt {
-                fmt.Printf("%d \t", nline)
+                fmt.Printf("%d ", nline)
             }
             if *wOpt {
-                fmt.Printf("%d \t", nword)
+                fmt.Printf("%d ", nword)
             }
             if *cOpt {
-                fmt.Printf("%d \t", nchar)
+                fmt.Printf("%d ", nchar)
             }
             fmt.Println(args[0])
             return
